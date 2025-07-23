@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: payment 
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: payment
+    environment: dev
+    tier: backend
+    code: payment-roboshop-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      code: payment-roboshop-dev
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: payment
+        environment: dev
+        tier: backend
+        code: payment-roboshop-dev
+    spec:
+      containers:
+      - name: payment-pod
+        image: "{{ .Values.deployment.image_url }}:{{ .Values.deployment.image_version }}"
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: payment-configmap

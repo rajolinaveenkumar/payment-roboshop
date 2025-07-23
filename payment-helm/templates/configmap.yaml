@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: payment-configmap 
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: payment
+    environment: dev
+    tier: backend
+    code: payment-roboshop-dev
+data:
+  CART_HOST: "cart-svc"
+  CART_PORT: "8080"
+  USER_HOST: "user-svc"
+  USER_PORT: "8080"
+  AMQP_HOST: "rabbitmq-svc"
