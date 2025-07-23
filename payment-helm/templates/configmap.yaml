@@ -14,4 +14,4 @@ data:
   CART_PORT: "8080"
   USER_HOST: "user-svc"
   USER_PORT: "8080"
-  # AMQP_HOST: "rabbitmq-svc"
+  AMQP_HOST: "rabbitmq-svc"
